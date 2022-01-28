@@ -2,6 +2,7 @@ package commandLine;
 
 import static commandLineMenus.rendering.examples.util.InOut.getString;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import commandLineMenus.List;
@@ -93,16 +94,17 @@ public class LigueConsole
 	}
 	
 	private Option ajouterEmploye(final Ligue ligue)
-	{
-		return new Option("ajouter un employé", "a",
-				() -> 
-				{
-					ligue.addEmploye(getString("nom : "), 
-						getString("prenom : "), getString("mail : "), 
-						getString("password : "));
-				}
-		);
-	}
+    {
+        return new Option("ajouter un employe", "a",
+                () -> 
+                {
+                    ligue.addEmploye(getString("nom : "), 
+                        getString("prenom : "), getString("mail : "), 
+                        getString("password : "),
+                        LocalDate.parse(getString("Date d'ajout :")), LocalDate.parse(getString("Date de suppression : ")));
+                }
+        );
+    }
 	
 	private Menu gererEmployes(Ligue ligue)
 	{
